@@ -39,7 +39,7 @@ outputs = tf.keras.layers.Dense(NUM_CLASSES, activation=tf.keras.activations.sof
 Оранжевая линия - на обучении  
 
  ***Линейная диаграмма точности:*** 
-<img src="./epoch_categorical_accuracy v2.svg">
+<img src="./epoch_categorical_accuracy v1.svg">
 
  ***Линейная диаграмма потерь:*** 
  
@@ -48,3 +48,37 @@ outputs = tf.keras.layers.Dense(NUM_CLASSES, activation=tf.keras.activations.sof
 ### Анализ результатов:
 
 Смотря на графики можно сказать, что наблюдается переобучение, что вызвано отсутстивем нормальный условий и малым размером обучающей выборки. 
+
+# 3.Создать и обучить сверточную нейронную сеть произвольной архитектуры с количеством сверточных слоев >3
+* **Описание структуры** 
+* Добавленны 3 сверточных слоя Canv2D с изменнеными параметрами.
+* Добавленны 3 слоя подвыборки MaxPool2D
+
+ ```
+  x = tf.keras.layers.Conv2D(filters=8, kernel_size=3)(inputs) //размером 222х222х8
+  x = tf.keras.layers.MaxPool2D()(x)
+  x = tf.keras.layers.Conv2D(filters=12, kernel_size=4)(x) //размером 222х222х12
+  x = tf.keras.layers.MaxPool2D()(x)
+  x = tf.keras.layers.Conv2D(filters=16, kernel_size=5)(x) //размером 222х222х16
+  x = tf.keras.layers.MaxPool2D()(x)
+  x = tf.keras.layers.Conv2D(filtres=24, kernel_size=6)(x) //размером 222х222х24
+  x = tf.keras.layers.MaxPool2D()(x)
+  x = tf.keras.layers.Flatten()(x)
+  outputs = tf.keras.layers.Dense(NUM_CLASSES, activation=tf.keras.activations.softmax)(x)
+  ```
+
+
+ ### Графики обучения для нейронной сети с несколькими сверточными слоями:
+ 
+Синяя линия - на валидации  
+Оранжевая линия - на обучении  
+
+ ***Линейная диаграмма точности:*** 
+<img src="./epoch_categorical_accuracy v2.svg">
+
+ ***Линейная диаграмма потерь:*** 
+ 
+<img src="./epoch_loss v2.svg">
+
+### Анализ результатов:
+
