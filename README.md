@@ -56,13 +56,13 @@ outputs = tf.keras.layers.Dense(NUM_CLASSES, activation=tf.keras.activations.sof
 
  ```
   x = tf.keras.layers.Conv2D(filters=8, kernel_size=3)(inputs) //размером 222х222х8
-  x = tf.keras.layers.MaxPool2D()(x)
-  x = tf.keras.layers.Conv2D(filters=12, kernel_size=4)(x) //размером 222х222х12
-  x = tf.keras.layers.MaxPool2D()(x)
-  x = tf.keras.layers.Conv2D(filters=16, kernel_size=5)(x) //размером 222х222х16
-  x = tf.keras.layers.MaxPool2D()(x)
-  x = tf.keras.layers.Conv2D(filtres=24, kernel_size=6)(x) //размером 222х222х24
-  x = tf.keras.layers.MaxPool2D()(x)
+  x = tf.keras.layers.MaxPool2D()(x) // размером 111x111x8 
+  x = tf.keras.layers.Conv2D(filters=12, kernel_size=4)(x) //размером 108х108х12
+  x = tf.keras.layers.MaxPool2D()(x) // размером 52x52x12
+  x = tf.keras.layers.Conv2D(filters=16, kernel_size=5)(x) //размером 48х48х16
+  x = tf.keras.layers.MaxPool2D()(x) // размером 24x24x16
+  x = tf.keras.layers.Conv2D(filtres=24, kernel_size=6)(x) //размером 19х19х24
+  x = tf.keras.layers.MaxPool2D()(x) // размером 10x10x24  
   x = tf.keras.layers.Flatten()(x)
   outputs = tf.keras.layers.Dense(NUM_CLASSES, activation=tf.keras.activations.softmax)(x)
   ```
