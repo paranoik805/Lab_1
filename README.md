@@ -43,7 +43,7 @@ outputs = tf.keras.layers.Dense(NUM_CLASSES, activation=tf.keras.activations.sof
 
  ***Линейная диаграмма потерь:*** 
  
-<img src="./epoch_loss v1).svg">
+<img src="./epoch_loss v1.svg">
 
 ### Анализ результатов:
 
