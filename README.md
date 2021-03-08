@@ -14,17 +14,17 @@ inputs = tf.keras.Input(shape=(RESIZE_TO, RESIZE_TO, 3))
 
 * Слой 2D свертки. Параметры: 8 filtres, kernel_size=3 (матрица ядра = 3x3)
 ```
-x = tf.keras.layers.Conv2D(filters=8, kernel_size=3)(inputs) //размер 222х222х8
+x = tf.keras.layers.Conv2D(filters=8, kernel_size=3)(inputs) //размер выходного тензора 222х222х8
 ```
 
 * Операция подвыборки. Параметры по умолчанию: pool_size = 2х2, strides = 2.
 ```
-x = tf.keras.layers.MaxPool2D()(x) //размер 111х111х8
+x = tf.keras.layers.MaxPool2D()(x) //размер выходного тензора 111х111х8
 ```
 
 * Преобразование многомерного тензора в одномерный. 
  ```
- x = tf.keras.layers.Flatten()(x) //111x111x8 = 98568
+ x = tf.keras.layers.Flatten()(x) // размер выходного тензора 111x111x8 = 98568
  ```
  
  * Полносвязный Dense слой с 20 выходами и функцией активации softmax, которая определяет к какой категории и с какой вероятностью относится поданное на вход изображение.
